@@ -1,0 +1,39 @@
+.main {
+    padding: 15px 40px;
+
+    .card {
+        margin: 20px;
+        width: 220px;
+
+        .card-image {
+            cursor: pointer;
+            width: 100%;
+        }
+        .card-context {
+            position: relative;
+
+            .card-title {
+                width: 80%;
+                font-size: 16px;
+                text-overflow: ellipsis;
+            }
+
+            .card-subtitle {
+                margin-top: 5px;
+                font-size: 13px;
+                color: $hex-4;
+            }
+
+            .card-label {
+                font-size: 10px;
+                padding: 0 3px;
+                color: $hex-4;
+                border: 1px solid $hex-4;
+                border-radius: 2px;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+            }
+        }
+    }
+}

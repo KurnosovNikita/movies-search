@@ -1,0 +1,24 @@
+.info-panel-container {
+    display: flex;
+    padding: 10px 120px;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+
+    .sort-by-container {
+
+        .sort-by-title {
+            padding-right: 40px;
+        }
+
+        .sort-link {
+            cursor: pointer;
+            padding-right: 30px;
+
+            &.active,
+            &:hover {
+                color: $hex-3;
+            }
+        }
+    }
+}
