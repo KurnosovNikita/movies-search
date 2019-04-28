@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 const apiPath = 'https://reactjs-cdp.herokuapp.com/movies';
 
 export const SORT_TYPE = {
@@ -25,13 +23,12 @@ export const getMovies = ({sortBy, sortOrder, search, searchBy, success}) => {
         searchBy,
     };
 
-    return $.ajax({
-        url: apiPath,
+    return fetch(apiPath, {
+        method: 'GET',
         data,
         contentType: 'application/json',
-        success,
-        error: (error) => {
-            throw new Error('Can not get Movie', error);
-        },
-    });
+    }).then(success)
+      .catch((error) => {
+          throw new Error('Can not get Movie', error);
+      });
 };
