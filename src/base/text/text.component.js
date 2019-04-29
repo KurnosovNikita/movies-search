@@ -9,7 +9,7 @@ Text.propTypes = {
     onClick: PropTypes.func,
     className: PropTypes.string,
     text: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
 };
 
 export default Text;

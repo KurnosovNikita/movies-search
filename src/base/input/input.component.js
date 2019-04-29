@@ -13,7 +13,7 @@ Input.propTypes = {
     className: PropTypes.string,
     containerClassName: PropTypes.string,
     text: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     placeholder: PropTypes.string,
 };
 

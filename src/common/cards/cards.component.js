@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from "react";
 import MovieCard from '../movie-card/movie-card.component';
 import map from 'lodash/map';
+import './cards.scss';
 
 class Cards extends React.Component {
     constructor(props) {

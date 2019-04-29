@@ -1,5 +1,6 @@
 import React from "react";
 import Link from '../../base/link/link.component';
+import './info-panel.scss';
 
 class InfoPanel extends React.PureComponent {
 

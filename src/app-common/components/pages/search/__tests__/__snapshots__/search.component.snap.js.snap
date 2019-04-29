@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should render <Search> correctly 1`] = `
+<Fragment>
+  <Header
+    activeFilter="title"
+    handleFieldInput={[Function]}
+    handleFieldKeyDown={[Function]}
+    handleFilterChange={[Function]}
+    handleSearchClick={[Function]}
+  />
+  <Main
+    activeSortByLink="rating"
+    handleImageClick={[Function]}
+    handleSortLinkClick={[Function]}
+    movies={Array []}
+  />
+</Fragment>
+`;

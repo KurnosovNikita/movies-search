@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import Header from '../../../../common/header/header.component';
 import Main from '../../../../common/main/main.component';
 import {SORT_ORDER, SORT_TYPE, SEARCH_BY, getMovies} from '../../../../utils';
+import './search.scss';
 
 class Search extends React.Component {
     constructor(props) {
@@ -81,10 +82,11 @@ class Search extends React.Component {
             sortOrder: SORT_ORDER.descending,
             search: this.state.searchFieldValue,
             searchBy: SEARCH_BY[this.state.activeFilter],
-            success: (resp) => {
-                this.setState({movies: resp.data});
-            },
-        });
+        })
+          .then((resp)=>resp.json())
+          .then((resp) => {
+              this.setState({movies: resp.data});
+          });
     };
 
     shouldComponentUpdate(nextProps, nextState) {

@@ -15,7 +15,7 @@ export const SEARCH_BY = {
     genres: 'genres',
 };
 
-export const getMovies = ({sortBy, sortOrder, search, searchBy, success}) => {
+export const getMovies = ({sortBy, sortOrder, search, searchBy}) => {
     let data = {
         sortBy,
         sortOrder,
@@ -27,7 +27,7 @@ export const getMovies = ({sortBy, sortOrder, search, searchBy, success}) => {
         method: 'GET',
         data,
         contentType: 'application/json',
-    }).then(success)
+    })
       .catch((error) => {
           throw new Error('Can not get Movie', error);
       });

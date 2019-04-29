@@ -1,0 +1,32 @@
+import React from 'react';
+import {shallow} from 'enzyme';
+import MovieDetail from '../movie-detail.component';
+
+describe('MovieDetail component', () => {
+    let props,
+      state;
+    beforeEach(() => {
+
+
+        state = {
+            movies: [],
+        };
+        props = {
+            selectedMovie: [{
+                id: 505,
+                genres: ['drama', 'comedy', 'triller'],
+                title: 'Harry Potter',
+                release_date: '20.05.2018',
+                poster_path: 'https://puu.sh/Dl8Lx/d4fcc4e5e6.png',
+            }],
+            changeToGlobalSearchPage: jest.fn(),
+        };
+        jest.spyOn(instance, 'fetchMovies').mockImplementaiton(jest.fn())
+    });
+
+    it('should render <MovieDetail> correctly', () => {
+        const component = shallow(<MovieDetail {...props}/>);
+
+        expect(component).toMatchSnapshot();
+    });
+});
