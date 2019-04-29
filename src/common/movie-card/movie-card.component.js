@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import Image from '../../base/image/image.component';
+import './movie-card.scss';
 
 class MovieCard extends React.PureComponent {
 
@@ -7,7 +8,6 @@ class MovieCard extends React.PureComponent {
         const {id, genres, title, release_date, poster_path} = this.props.movie;
 
         return (
-          <Fragment>
               <div className="card" data-movie-id={id}>
                   <Image className="card-image"
                              src={poster_path}
@@ -18,7 +18,6 @@ class MovieCard extends React.PureComponent {
                       <span className="card-label">{new Date(release_date).getFullYear()}</span>
                   </div>
               </div>
-          </Fragment>
         );
     }
 }

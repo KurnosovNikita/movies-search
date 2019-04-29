@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard component should render <MovieCard> correctly 1`] = `
+<div
+  className="card"
+  data-movie-id={505}
+>
+  <Image
+    className="card-image"
+    src="https://puu.sh/Dl8Lx/d4fcc4e5e6.png"
+  />
+  <div
+    className="card-context"
+  >
+    <div
+      className="card-title"
+    >
+      Harry Potter
+    </div>
+    <div
+      className="card-subtitle"
+    >
+      drama & comedy & triller
+    </div>
+    <span
+      className="card-label"
+    >
+      NaN
+    </span>
+  </div>
+</div>
+`;

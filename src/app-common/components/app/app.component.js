@@ -2,6 +2,7 @@ import React from "react";
 import BasePage from '../pages/base/base.component';
 import SearchPage from '../pages/search/search.component';
 import MovieDetailPage from '../pages/movie-detail/movie-detail.component';
+import './app.scss';
 
 class App extends React.Component {
     constructor(props) {

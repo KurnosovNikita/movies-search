@@ -3,6 +3,7 @@ import MovieDescription from '../../../../common/movie-description/movie-descrip
 import Cards from '../../../../common/cards/cards.component';
 import Text from '../../../../base/text/text.component';
 import {SORT_ORDER, SORT_TYPE, SEARCH_BY, getMovies} from '../../../../utils';
+import './movie-detail.scss';
 
 class MovieDetail extends React.Component {
     constructor(props) {
@@ -45,40 +46,16 @@ class MovieDetail extends React.Component {
     }
 
     fetchMovies = (selectedMovie = this.props.selectedMovie) => {
-        this.setState({movies: [{
-            id: 1,
-            genres: ['da'],
-            title: 'title1',
-            release_date: '02.04.2019',
-            poster_path: 'https://ae01.alicdn.com/kf/HTB1gfbapy0TMKJjSZFNq6y_1FXah/Star-Wars-The-Last-Jedi-Movie-Poster-Episode-VIII-2017-Film-Art-Silk-Fabric-Poster-36.jpg',
-        },{
-            id: 2,
-            genres: ['da'],
-            title: 'title2',
-            release_date: '02.04.2019',
-            poster_path: 'https://ae01.alicdn.com/kf/HTB1gfbapy0TMKJjSZFNq6y_1FXah/Star-Wars-The-Last-Jedi-Movie-Poster-Episode-VIII-2017-Film-Art-Silk-Fabric-Poster-36.jpg',
-        },{
-            id: 3,
-            genres: ['da'],
-            title: 'title3',
-            release_date: '02.04.2019',
-            poster_path: 'https://ae01.alicdn.com/kf/HTB1gfbapy0TMKJjSZFNq6y_1FXah/Star-Wars-The-Last-Jedi-Movie-Poster-Episode-VIII-2017-Film-Art-Silk-Fabric-Poster-36.jpg',
-        },{
-            id: 4,
-            genres: ['da'],
-            title: 'title4',
-            release_date: '02.04.2019',
-            poster_path: 'https://ae01.alicdn.com/kf/HTB1gfbapy0TMKJjSZFNq6y_1FXah/Star-Wars-The-Last-Jedi-Movie-Poster-Episode-VIII-2017-Film-Art-Silk-Fabric-Poster-36.jpg',
-        }]});
         getMovies({
             sortBy: SORT_TYPE.rating,
             sortOrder: SORT_ORDER.descending,
             search: selectedMovie[0].genres[0],
             searchBy: SEARCH_BY.genres,
-            success: (resp) => {
-                this.setState({movies: resp.data});
-            },
-        });
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+              this.setState({movies: resp.data});
+          });
     };
 
     shouldComponentUpdate(nextProps, nextState) {

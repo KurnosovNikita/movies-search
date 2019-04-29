@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render <Header> correctly 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="header-context"
+  >
+    <Text
+      className="title"
+      text="netflixroulette"
+    />
+    <Text
+      className="subtitle"
+      text="Find your movie"
+    />
+    <Input
+      className="search-field"
+      containerClassName="search-field-container"
+      onInput={[MockFunction]}
+      onKeyDown={[MockFunction]}
+      placeholder="Enter to search"
+    />
+    <div
+      className="filter-container"
+    >
+      <span>
+        search by
+      </span>
+      <Button
+        className="filter-btn"
+        id="title"
+        onClick={[MockFunction]}
+        text="title"
+      />
+      <Button
+        className="filter-btn"
+        id="genres"
+        onClick={[MockFunction]}
+        text="genre"
+      />
+      <Button
+        className="search-btn"
+        onClick={[MockFunction]}
+        text="search"
+      />
+    </div>
+  </div>
+</header>
+`;

@@ -1,7 +1,8 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Input from '../../base/input/input.component';
 import Button from '../../base/button/button.component';
 import Text from '../../base/text/text.component';
+import './header.scss';
 
 class Header extends React.PureComponent {
     render() {

@@ -1,5 +1,6 @@
 import React from "react";
 import Text from '../../base/text/text.component';
+import './footer.scss';
 
 class Footer extends React.PureComponent {
     render() {

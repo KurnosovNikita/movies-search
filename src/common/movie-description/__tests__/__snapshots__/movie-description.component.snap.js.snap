@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDescription component should render <MovieDescription> correctly 1`] = `
+<header
+  className="header header-movie-detail"
+>
+  <div
+    className="header-context"
+  >
+    <Text
+      className="title"
+      text="netflixroulette"
+    />
+    <Button
+      className="back-to-search-btn"
+      id="backToSearch"
+      onClick={[MockFunction]}
+      text="search"
+    />
+    <div
+      className="description-container"
+    >
+      <Image
+        className="image"
+        src="https://puu.sh/Dl8Lx/d4fcc4e5e6.png"
+      />
+      <div
+        className="description"
+      >
+        <Text
+          className="title"
+          text="Harry Potter"
+        />
+        <Text
+          className="subtitle"
+          text="Film tagline"
+        />
+        <div
+          className="sub-description"
+        >
+          <Text
+            className="year"
+            text="NaN"
+          />
+          <Text
+            className="duration"
+            text="250 min"
+          />
+        </div>
+        <Text
+          className="overview"
+          text="This film is about greatness"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+`;

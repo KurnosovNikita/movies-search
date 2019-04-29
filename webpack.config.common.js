@@ -4,7 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const commonConfig = {
     entry: {
-        main: ["./src/index.js", "./src/index.scss"]
+        main: "./src/index.js"
     },
     module: {
         rules: [
@@ -15,15 +15,16 @@ const commonConfig = {
                 options: {presets: ["@babel/env"]}
             },
             {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                })
+                test: /\.png|jpg$/,
+                include: path.join(__dirname, 'src'),
+                loader: ['file-loader']
             },
             {
-                test: /\.png|jpg$/,
-                include: path.join(__dirname, 'public/assets'),
-                loader: ['file-loader']
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader!sass-loader",
+                })
             },
         ]
     },
@@ -44,12 +45,8 @@ const commonConfig = {
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
             filename: 'index.css',
-        }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
-        })]
+        })
+        ]
 };
 
 export default commonConfig;

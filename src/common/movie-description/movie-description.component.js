@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
 import Button from '../../base/button/button.component';
 import Text from '../../base/text/text.component';
-import Image from '../../base/image/image.component'
+import Image from '../../base/image/image.component';
+import './movie-description.scss';
 
 class MovieDescription extends React.PureComponent {
     render() {
@@ -22,7 +23,7 @@ class MovieDescription extends React.PureComponent {
                           <Text className="title" text={title}/>
                           <Text className="subtitle" text={tagline}/>
                           <div className="sub-description">
-                              <Text className="year" text={new Date(release_date).getFullYear()}/>
+                              <Text className="year" text={new Date(release_date).getFullYear().toString()}/>
                               <Text className="duration" text={`${runtime} min`}/>
                           </div>
                           <Text className="overview" text={overview}/>

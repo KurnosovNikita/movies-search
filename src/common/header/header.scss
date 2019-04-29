@@ -1,7 +1,9 @@
+@import '../../variables';
+
 .header {
     width: 100%;
     height: 220px;
-    background-image: url('../public/assets/img/header-background.png');
+    background-image: url('./header-background.png');
     background-size: cover;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 

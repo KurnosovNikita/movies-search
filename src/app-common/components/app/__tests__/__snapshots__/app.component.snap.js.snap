@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component with globalSearch component should render <App> with <SearchPage> 1`] = `
+<Base
+  data={
+    <Search
+      changeToMovieDetailPage={[Function]}
+    />
+  }
+/>
+`;
+
+exports[`App component with movieDetail component should render <App> with <MovieDetailPage> 1`] = `
+<Base
+  data={
+    <Search
+      changeToMovieDetailPage={[Function]}
+    />
+  }
+/>
+`;
