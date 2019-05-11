@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component should render <Footer> correctly 1`] = `
+<footer
+  className="test"
+>
+  <div
+    className="test"
+  >
+    <Text
+      className="title"
+      text="netflixroulette"
+    />
+  </div>
+</footer>
+`;

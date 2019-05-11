@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main component should render <Main> correctly 1`] = `
+<main
+  className="main"
+>
+  <Text
+    className="no-results"
+    text="No  films found"
+  />
+</main>
+`;

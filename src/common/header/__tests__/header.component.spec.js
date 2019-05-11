@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import Header from '../header.component';
 
 describe('Header component', () => {
@@ -24,13 +24,13 @@ describe('Header component', () => {
     });
 
     // it('search button keydown should call handleFieldKeyDown', () => {
-    //
+    //     const onKeyDown = sinon.spy();
     //     const component = mount(<Header {...props}/>);
     //     component
     //       .find('button.search-btn')
-    //       .simulate('keydown', {keyCode: 13});
+    //       .simulate('keyDown', {keyCode: 13});
     //
-    //     expect(props.handleFieldKeyDown).toHaveBeenCalled();
+    //     expect(onKeyDown.called).to.be.true;
     // });
 
     it('filter button click should call handleFilterChange', () => {

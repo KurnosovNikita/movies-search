@@ -1,21 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App component with globalSearch component should render <App> with <SearchPage> 1`] = `
-<Base
-  data={
-    <Search
-      changeToMovieDetailPage={[Function]}
-    />
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+    }
   }
-/>
+>
+  <ConnectFunction
+    selectedMovie={null}
+  />
+</ContextProvider>
 `;
 
 exports[`App component with movieDetail component should render <App> with <MovieDetailPage> 1`] = `
-<Base
-  data={
-    <Search
-      changeToMovieDetailPage={[Function]}
-    />
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+    }
   }
-/>
+>
+  <ConnectFunction
+    selectedMovie={null}
+  />
+</ContextProvider>
 `;

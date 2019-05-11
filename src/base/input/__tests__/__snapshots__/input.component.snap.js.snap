@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render <Input> correctly 1`] = `
+<div
+  className="containerClassName"
+>
+  <input
+    className="className"
+    id="id"
+    onInput={[MockFunction]}
+    onKeyDown={[MockFunction]}
+    placeholder="placeholder"
+  />
+</div>
+`;
