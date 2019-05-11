@@ -39,7 +39,8 @@ const commonConfig = {
         port: 3000,
         watchContentBase: true,
         publicPath: "http://localhost:3000/dist/",
-        hotOnly: true
+        hotOnly: true,
+        historyApiFallback: true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

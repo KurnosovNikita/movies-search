@@ -1,7 +1,8 @@
-import React, {Fragment} from "react";
+import React from "react";
 import Button from '../../base/button/button.component';
 import Text from '../../base/text/text.component';
 import Image from '../../base/image/image.component';
+import {Link} from 'react-router-dom';
 import './movie-description.scss';
 
 class MovieDescription extends React.PureComponent {
@@ -13,10 +14,12 @@ class MovieDescription extends React.PureComponent {
           <header className="header header-movie-detail">
               <div className="header-context">
                   <Text className="title" text="netflixroulette"/>
-                  <Button onClick={changeToGlobalSearchPage}
-                          className="back-to-search-btn"
-                          id="backToSearch"
-                          text="search"/>
+                  <Link to='/'>
+                      <Button onClick={changeToGlobalSearchPage}
+                              className="back-to-search-btn"
+                              id="backToSearch"
+                              text="search"/>
+                  </Link>
                   <div className="description-container">
                       <Image className="image" src={poster_path}/>
                       <div className="description">

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoPanel component should render <InfoPanel> correctly 1`] = `
+<div
+  className="info-panel-container"
+>
+  <div
+    className="movies-quantity"
+  >
+    <Component />
+     movies found
+  </div>
+  <div
+    className="sort-by-container"
+  >
+    <span
+      className="sort-by-title"
+    >
+      Sort By
+    </span>
+    <Link
+      className="sort-link"
+      id="releaseDate"
+      onClick={[MockFunction]}
+      text="release date"
+    />
+    <Link
+      className="sort-link"
+      id="rating"
+      onClick={[MockFunction]}
+      text="rating"
+    />
+  </div>
+</div>
+`;

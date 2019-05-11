@@ -11,12 +11,16 @@ exports[`MovieDescription component should render <MovieDescription> correctly 1
       className="title"
       text="netflixroulette"
     />
-    <Button
-      className="back-to-search-btn"
-      id="backToSearch"
-      onClick={[MockFunction]}
-      text="search"
-    />
+    <Link
+      to="/"
+    >
+      <Button
+        className="back-to-search-btn"
+        id="backToSearch"
+        onClick={[MockFunction]}
+        text="search"
+      />
+    </Link>
     <div
       className="description-container"
     >

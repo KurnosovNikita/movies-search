@@ -16,16 +16,10 @@ export const SEARCH_BY = {
 };
 
 export const getMovies = ({sortBy, sortOrder, search, searchBy}) => {
-    let data = {
-        sortBy,
-        sortOrder,
-        search,
-        searchBy,
-    };
+    const url = apiPath + `?sortBy=${sortBy}&sortOrder=${sortOrder}&search=${search}&searchBy=${searchBy}`;
 
-    return fetch(apiPath, {
+    return fetch(url, {
         method: 'GET',
-        data,
         contentType: 'application/json',
     })
       .catch((error) => {

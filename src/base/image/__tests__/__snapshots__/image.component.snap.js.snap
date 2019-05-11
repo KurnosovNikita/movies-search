@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image component should render <Image> correctly 1`] = `
+<img
+  alt="imageAlt"
+  className="className"
+  onClick={[MockFunction]}
+  src="src"
+/>
+`;

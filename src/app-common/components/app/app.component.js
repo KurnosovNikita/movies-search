@@ -1,47 +1,68 @@
-import React from "react";
-import BasePage from '../pages/base/base.component';
+import React, {Fragment} from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 import SearchPage from '../pages/search/search.component';
 import MovieDetailPage from '../pages/movie-detail/movie-detail.component';
+import NotFoundPage from '../pages/not-found/not-found.component';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {changeSelectedMovie} from "../../store/app/app.action";
 import './app.scss';
+import Footer from "../../../common/footer/footer.component";
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            activePage: 'globalSearch',
-            selectedMovie: null,
-        };
-    }
+    handleSelectedMovie = ({selectedMovie}) => {
+        this.props.changeSelectedMovie(selectedMovie);
+    };
 
     render() {
-        const {activePage, selectedMovie} = this.state;
-        let currentPage;
+        const {selectedMovie} = this.props;
 
-        switch (activePage) {
-            case 'globalSearch':
-                currentPage = <SearchPage changeToMovieDetailPage={this.changeToMovieDetailPage}/>;
-                break;
-            case 'movieDetail':
-                currentPage = <MovieDetailPage selectedMovie={selectedMovie}
-                                                    changeToMovieDetailPage={this.changeToMovieDetailPage}
-                                                    changeToGlobalSearchPage={this.changeToGlobalSearchPage}/>;
-                break;
-            default:
-                break;
-        }
         return (
-          <BasePage data={currentPage}/>
+          <Fragment>
+              <Router basename='/'>
+                  <div className="wrapper">
+                      <Switch>
+                          <Route
+                            exact
+                            path='/'
+                            component={({location, history}) =>
+                              <SearchPage location={location}
+                                          history={history}
+                                          handleSelectedMovie={this.handleSelectedMovie}/>}
+                          />
+                          <Route path='/film/'
+                                 component={() =>
+                                   <MovieDetailPage selectedMovie={selectedMovie}
+                                                    handleSelectedMovie={this.handleSelectedMovie}
+                                   />}
+                          />
+                          <Route component={NotFoundPage}
+                          />
+                      </Switch>
+                  </div>
+                  <Footer footerClassName="footer" contextClassName="footer-content"/>
+              </Router>
+          </Fragment>
         );
-    }
-
-    changeToMovieDetailPage = ({selectedMovie}) => {
-        this.setState({selectedMovie: selectedMovie, activePage: 'movieDetail'});
-    }
-
-    changeToGlobalSearchPage = () => {
-        this.setState({selectedMovie: [], activePage: 'globalSearch'});
     }
 }
 
-export default App;
+App.propTypes = {
+    changeSelectedMovie: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state, props) => {
+    return {
+        selectedMovie: state.app.selectedMovie,
+    };
+};
+
+const mapDispatchToProps = {
+    changeSelectedMovie,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

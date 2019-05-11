@@ -5,10 +5,14 @@ exports[`MovieCard component should render <MovieCard> correctly 1`] = `
   className="card"
   data-movie-id={505}
 >
-  <Image
-    className="card-image"
-    src="https://puu.sh/Dl8Lx/d4fcc4e5e6.png"
-  />
+  <Link
+    to="/film/505"
+  >
+    <Image
+      className="card-image"
+      src="https://puu.sh/Dl8Lx/d4fcc4e5e6.png"
+    />
+  </Link>
   <div
     className="card-context"
   >

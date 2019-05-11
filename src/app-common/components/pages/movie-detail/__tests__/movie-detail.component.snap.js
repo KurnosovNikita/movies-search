@@ -1,6 +1,11 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import MovieDetail from '../movie-detail.component';
+import configureMockStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
 
 describe('MovieDetail component', () => {
     let props,
@@ -21,11 +26,14 @@ describe('MovieDetail component', () => {
             }],
             changeToGlobalSearchPage: jest.fn(),
         };
-        jest.spyOn(instance, 'fetchMovies').mockImplementaiton(jest.fn())
+
     });
 
     it('should render <MovieDetail> correctly', () => {
-        const component = shallow(<MovieDetail {...props}/>);
+        const component = shallow(
+          <Provider store={store}>
+              <MovieDetail {...props}/>
+          </Provider>);
 
         expect(component).toMatchSnapshot();
     });

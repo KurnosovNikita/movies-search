@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
 import MovieDescription from '../movie-description.component';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 describe('MovieDescription component', () => {
     let props;
@@ -19,7 +20,10 @@ describe('MovieDescription component', () => {
     });
 
     it('back to search button click should call changeToGlobalSearchPage', () => {
-        const component = mount(<MovieDescription {...props}/>);
+        const component = mount(
+          <Router>
+              <MovieDescription {...props}/>
+          </Router>);
         component
           .find('button#backToSearch')
           .simulate('click');
