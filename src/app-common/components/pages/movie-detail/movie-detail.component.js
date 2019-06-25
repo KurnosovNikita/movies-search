@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import MovieDescription from '../../../../common/movie-description/movie-description.component';
@@ -9,18 +9,17 @@ import {
     SORT_TYPE,
     SEARCH_BY,
 } from '../../../../utils';
-import {
-    fetchMoviesByGenre
-} from "../../../store/movie-detail/movie-detail.action";
+import {mapDispatchToProps, mapStateToProps} from './movie-details.container';
 import './movie-detail.scss';
 
 class MovieDetail extends React.Component {
 
     handleImageClick = (event) => {
-        let selectedMovie = this.props.movies.filter(
+        const {movies, handleSelectedMovie} = this.props;
+        let selectedMovie = movies.filter(
           (movie) => movie.id === Number(event.target.closest('.card').getAttribute('data-movie-id')));
         if (selectedMovie) {
-            this.props.handleSelectedMovie({selectedMovie});
+            handleSelectedMovie({selectedMovie});
             this.fetchMovies(selectedMovie);
         }
     };
@@ -41,16 +40,20 @@ class MovieDetail extends React.Component {
     };
 
     shouldComponentUpdate(nextProps, nextState) {
-        return !(this.props.movies.length === nextProps.movies.length
-          && this.props.selectedMovie[0].id === nextProps.selectedMovie[0].id && this.props.movies.filter(
-            (item, index) => item.id === nextProps.movies[index].id).length === this.props.movies.length);
+        const {movies, selectedMovie} = this.props,
+          isMoviesLengthEquals = movies.length === nextProps.movies.length,
+          isSelectedMovieNotChanged = selectedMovie[0].id === nextProps.selectedMovie[0].id,
+          isMoviesInTheSameOrder = movies.filter(
+            (item, index) => item.id === nextProps.movies[index].id).length === movies.length;
+
+        return !(isMoviesLengthEquals && isSelectedMovieNotChanged && isMoviesInTheSameOrder);
     }
 
     render() {
         const {movies, selectedMovie} = this.props;
 
         return (
-          <Fragment>
+          <div>
               <MovieDescription
                 selectedMovie={selectedMovie}/>
               <main className="main">
@@ -58,24 +61,13 @@ class MovieDetail extends React.Component {
                   <Cards movies={movies}
                          handleImageClick={this.handleImageClick}/>
               </main>
-          </Fragment>
+          </div>
         );
     }
 }
 
 MovieDetail.propTypes = {
     fetchMoviesByGenre: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state, props) => {
-    return {
-        movies: state.movieDetail.moviesByGenre,
-        loading: state.movieDetail.loading,
-    };
-};
-
-const mapDispatchToProps = {
-    fetchMoviesByGenre,
 };
 
 export default connect(
