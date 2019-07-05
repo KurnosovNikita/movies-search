@@ -3,9 +3,6 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const commonConfig = {
-    entry: {
-        main: "./src/index.js"
-    },
     module: {
         rules: [
             {
@@ -29,19 +26,6 @@ const commonConfig = {
         ]
     },
     resolve: {extensions: ["*", ".js", ".jsx", ".scss", ".png"]},
-    output: {
-        path: path.resolve(__dirname, "dist/"),
-        publicPath: "../dist/",
-        filename: "bundle.js"
-    },
-    devServer: {
-        contentBase: path.join(__dirname, "public/"),
-        port: 3000,
-        watchContentBase: true,
-        publicPath: "http://localhost:3000/dist/",
-        hotOnly: true,
-        historyApiFallback: true
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
@@ -50,4 +34,4 @@ const commonConfig = {
         ]
 };
 
-export default commonConfig;
+module.exports = commonConfig;

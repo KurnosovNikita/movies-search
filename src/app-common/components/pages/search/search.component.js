@@ -4,12 +4,7 @@ import PropTypes from "prop-types";
 import Header from '../../../../common/header/header.component';
 import Main from '../../../../common/main/main.component';
 import {SORT_ORDER, SORT_TYPE, SEARCH_BY} from '../../../../utils';
-import {
-    changeFilter,
-    changeSort,
-    changeInput,
-    fetchMovies,
-} from "../../../store/search/search.action";
+import {mapStateToProps, mapDispatchToProps} from './search.container';
 import './search.scss';
 
 class Search extends React.Component {
@@ -23,10 +18,11 @@ class Search extends React.Component {
     };
 
     handleImageClick = (event) => {
-        const selectedMovie = this.props.movies.filter(
+        const {handleSelectedMovie, movies} = this.props;
+        const selectedMovie = movies.filter(
           (movie) => movie.id === Number(event.target.closest('.card').getAttribute('data-movie-id')));
 
-        this.props.handleSelectedMovie({selectedMovie});
+        handleSelectedMovie({selectedMovie});
     };
 
     handleFieldKeyDown = (event) => {
@@ -40,12 +36,13 @@ class Search extends React.Component {
     };
 
     handleSortLinkClick = (event) => {
-        const data = {
+        const {movies, changeSort} = this.props,
+        data = {
             event,
-            movies: this.props.movies,
+            movies: movies,
         };
 
-        this.props.changeSort(data);
+        changeSort(data);
     };
 
     handleSearchClick = () => {
@@ -113,6 +110,10 @@ class Search extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         let hasEqualValues = true;
+        const {movies} = this.props,
+          isMoviesLengthEquals = movies.length === nextProps.movies.length,
+          isMoviesInTheSameOrder = movies.filter(
+            (item, index) => item.id === nextProps.movies[index].id).length === movies.length;
 
         for (let key in this.props) {
             if (this.props.hasOwnProperty(key)
@@ -121,16 +122,17 @@ class Search extends React.Component {
                 hasEqualValues = false;
         }
 
-        return !(hasEqualValues && this.props.movies.length === nextProps.movies.length
-          && this.props.movies.filter(
-            (item, index) => item.id === nextProps.movies[index].id).length === this.props.movies.length);
+        return !(hasEqualValues && isMoviesLengthEquals
+          && isMoviesInTheSameOrder);   
     }
 
     componentDidMount() {
-        const data = this.getSearchParamsURL(this.props.location),
+        const {location, fetchMovies} = this.props,
+          data = this.getSearchParamsURL(location),
           {sortBy, sortOrder, search, searchBy} = data;
+
         if (sortBy || sortOrder || search || searchBy) {
-            this.props.fetchMovies(this.updateSearchURL(data));
+            fetchMovies(this.updateSearchURL(data));
         }
     }
 
@@ -158,23 +160,6 @@ Search.propTypes = {
     changeSort: PropTypes.func.isRequired,
     changeInput: PropTypes.func.isRequired,
     fetchMovies: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state, props) => {
-    return {
-        movies: state.search.movies,
-        searchFieldValue: state.search.searchFieldValue,
-        activeFilter: state.search.activeFilter,
-        activeSortByLink: state.search.activeSortByLink,
-        loading: state.search.loading,
-    };
-};
-
-const mapDispatchToProps = {
-    changeFilter,
-    changeSort,
-    changeInput,
-    fetchMovies,
 };
 
 export default connect(
